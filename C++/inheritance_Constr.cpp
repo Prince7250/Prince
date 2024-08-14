@@ -10,7 +10,7 @@ class number{
 };
 class number1 {
     public:
-    void table(){
+    void take(){
         int n;
         cout<<"\n\nEnter any number to display of that table : ";
         cin>>n;
@@ -46,7 +46,7 @@ class number3 : public number2 {
 int main(){
      number num1 = number(23,45);
      number1 n1;
-     n1.table();
+     n1.take();
     number3 num2;
     num2.even();
     num2.sum_of();
