@@ -11,5 +11,5 @@ int main(){
     cout<<b<<" is greater than "<<a;
     // main();
     return 0;
-
 }
+
