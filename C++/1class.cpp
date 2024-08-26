@@ -2,7 +2,6 @@
 using namespace std;
 class stud
 {
-private:
     int Roll;
     char name[10];
     int mob_no;
