@@ -2,10 +2,10 @@
 using namespace std;
 int main(){
     int a;
-    cout<<"Enter any number ";
+    cout<<"\nEnter any number "<<endl;
     cin>>a;
     if(a%2==0)
-      cout<<a<<" is a even number.";
+      cout<<a<<" is a even number."<<endl;
       else
       cout<<a<<" is a odd number.";
     return 0;
