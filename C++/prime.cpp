@@ -4,7 +4,7 @@
 using namespace std;
 int main()
 {
-  int data, i;
+  int data;
   while (true)
   {
     int a = 0;
@@ -24,9 +24,10 @@ int main()
       cout << data << " is not prime number." << endl;
       continue;
     }
-    {
 
-      for (i = 2; i <= sqrt(data); i++)
+    
+
+      for (int i = 2; i <= sqrt(data); i++)
       {
         if (data % i == 0)
         {
@@ -38,7 +39,7 @@ int main()
         cout << data << " is a not Prime number. ";
       else
         cout << data << " is a Prime number. ";
-    }
+    
   }
   return 0;
 }
