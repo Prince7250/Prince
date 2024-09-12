@@ -28,5 +28,6 @@ int main()
     stud s1;
     s1.student();
     s1.display();
+    // system("CLS");
     return 0;
 }

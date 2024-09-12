@@ -4,7 +4,8 @@ int main()
 {
     int arr[100], n, i, sum = 0;
     float ave;
-    cout << "Enter count of number : ";
+    x:
+    cout << "\nEnter count of number : "<<endl;
     cin >> n;
     cout << "Enter " << n << " times of any integer : ";
     for (i = 0; i < n; i++)
@@ -15,10 +16,11 @@ int main()
     for (i = 0; i < n; i++)
     {
         sum += arr[i];
-        cout << " " << arr[i];
+        cout << " " << arr[];
     }
-    cout << "\nAddition of given array is : " << sum;
+    cout << "\nAddition of given array is : " << sum<<endl;
     ave = (float)sum / n;
-    cout << "\nAverage of given number is : " << ave;
+    cout << "Average of given number is : " << ave<<endl;
+    goto x;
     return 0;
 }

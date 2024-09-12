@@ -25,8 +25,8 @@ void pop()
     }
     else
     {
-        top--;
         cout << "Poed data is : " << arr[top];
+        top--;
     }
 }
 
@@ -40,7 +40,7 @@ void peek()
 
 void display()
 {
-    if (top == 0)
+    if (top == -1)
     {
         cout << "Stack is Empty.";
     }
