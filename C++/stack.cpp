@@ -1,79 +1,92 @@
 #include <iostream>
-// #include <vector>
 using namespace std;
-int size, arr[100], top = -1;
+const int MaxSize = 100;
+int size, arr[MaxSize], top = -1, value = 0, ch;;
 
 void push()
 {
     if (top == size - 1)
     {
-        cout << "Stack is overflow.";
+        cout << "Stack is overflow." << endl;
     }
     else
     {
-        // top++;
-        cout << "Insert data is : " << arr[top];
         top++;
+        arr[top] = value;
+        cout << "Insert data is : " << value << endl;
     }
+    cout << endl;
 }
 
 void pop()
 {
     if (top == -1)
     {
-        cout << "data is under flow.";
+        cout << "data is under flow." << endl;
     }
     else
     {
-        cout << "Poed data is : " << arr[top];
+        value = arr[top];
         top--;
+        cout << "Poped data is : " << value << endl;
     }
+    cout << endl;
 }
 
 void peek()
 {
     if (top == -1)
-        cout << "Stack is empty.";
+        cout << "\nStack is empty." << endl;
     else
-        cout << "Top value is : " << arr[top];
+        cout << "Peek value is : " << arr[top] << endl
+             << endl;
 }
 
 void display()
 {
     if (top == -1)
     {
-        cout << "Stack is Empty.";
+        cout << "Stack is Empty." << endl;
     }
     else
-        for (int i = 0; i <= top; i++)
-        {
-            cout << arr[i] << " ";
-        }
+        cout << "\nData is : " << endl;
+    for (int i = 0; i <= top; i++)
+    {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
 }
 
 int main()
 {
-    int ch;
-    // vector<int> vec;
+    
     cout << "Enter the size of the stack : ";
     cin >> size;
-    cout << "\n   This is the stack operation : " << endl;
-    cout << "-------------------------------------";
-x:
+    while(size < 1 || size > MaxSize){
+     cout << "Invalid Size. Please Enter Size Between 1 to " << MaxSize << endl;
+     cout << "\nRenter size of the stack : ";
+    cin >> size;
+}
+
+while (true)
 {
-    cout << "\n\nWhich operation do you want : " << endl;
-    cout << "   1. push " << endl;
-    cout << "   2. pop " << endl;
-    cout << "   3. peek " << endl;
-    cout << "   4. Display" << endl;
-    cout << "   5. Exit " << endl;
-    cout << "Enter any operation : ";
+    cout << "              ---------------------------------------";
+    cout << "\n              |    Stack Operations                 |" << endl;
+    cout << "              |-------------------------------------|";
+    cout << "\n              |   Which operation do you want :     |" << endl;
+    cout << "              |         1. push                     |" << endl;
+    cout << "              |         2. pop                      |" << endl;
+    cout << "              |         3. peek                     |" << endl;
+    cout << "              |         4. Display                  |" << endl;
+    cout << "              |         5. Exit                     |" << endl;
+    cout << "              ---------------------------------------";
+    cout << "\n\nEnter your choice : ";
     cin >> ch;
     switch (ch)
     {
     case 1:
         cout << "\nEnter data to push: ";
-        cin >> arr[top];
+        cin >> value;
         push();
         break;
 
@@ -87,7 +100,6 @@ x:
         break;
 
     case 4:
-        cout << "\nData is : ";
         display();
         break;
 
@@ -96,11 +108,9 @@ x:
         break;
 
     default:
-        cout << "\nEnter another choice.";
+        cout << "Please Enter correct choice." << endl;
         break;
     }
 }
-    goto x;
-
-    return 0;
+return 0;
 }
