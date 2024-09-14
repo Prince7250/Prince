@@ -25,21 +25,18 @@ int main()
       continue;
     }
 
-    
-
-      for (int i = 2; i <= sqrt(data); i++)
+    for (int i = 2; i <= sqrt(data); i++)
+    {
+      if (data % i == 0)
       {
-        if (data % i == 0)
-        {
-          a++;
-          break;
-        }
+        a++;
+        break;
       }
-      if (a == 1)
-        cout << data << " is a not Prime number. ";
-      else
-        cout << data << " is a Prime number. ";
-    
+    }
+    if (a == 1)
+      cout << data << " is a not Prime number. ";
+    else
+      cout << data << " is a Prime number. ";
   }
   return 0;
 }

@@ -1,7 +1,9 @@
 #include <iostream>
+#include <limits>
 using namespace std;
 const int MaxSize = 100;
-int size, arr[MaxSize], top = -1, value = 0, ch;;
+int size, arr[MaxSize], top = -1, value = 0, ch;
+;
 
 void push()
 {
@@ -13,7 +15,7 @@ void push()
     {
         top++;
         arr[top] = value;
-        cout << "Insert data is : " << value << endl;
+        cout << "\nInsert data is : " << value << endl;
     }
     cout << endl;
 }
@@ -59,58 +61,83 @@ void display()
 
 int main()
 {
-    
+
     cout << "Enter the size of the stack : ";
     cin >> size;
-    while(size < 1 || size > MaxSize){
-     cout << "Invalid Size. Please Enter Size Between 1 to " << MaxSize << endl;
-     cout << "\nRenter size of the stack : ";
-    cin >> size;
-}
-
-while (true)
-{
-    cout << "              ---------------------------------------";
-    cout << "\n              |    Stack Operations                 |" << endl;
-    cout << "              |-------------------------------------|";
-    cout << "\n              |   Which operation do you want :     |" << endl;
-    cout << "              |         1. push                     |" << endl;
-    cout << "              |         2. pop                      |" << endl;
-    cout << "              |         3. peek                     |" << endl;
-    cout << "              |         4. Display                  |" << endl;
-    cout << "              |         5. Exit                     |" << endl;
-    cout << "              ---------------------------------------";
-    cout << "\n\nEnter your choice : ";
-    cin >> ch;
-    switch (ch)
+    while (size < 1 || size > MaxSize)
     {
-    case 1:
-        cout << "\nEnter data to push: ";
-        cin >> value;
-        push();
-        break;
-
-    case 2:
-        pop();
-        break;
-
-    case 3:
-        peek();
-
-        break;
-
-    case 4:
-        display();
-        break;
-
-    case 5:
-        exit(0);
-        break;
-
-    default:
-        cout << "Please Enter correct choice." << endl;
-        break;
+        cout << "Invalid Size. Please Enter Size Between 1 to " << MaxSize << endl;
+        cout << "\nRenter size of the stack : ";
+        cin >> size;
     }
-}
-return 0;
+
+    while (true)
+    {
+        cout << "              ---------------------------------------";
+        cout << "\n              |    Stack Operations                 |" << endl;
+        cout << "              |-------------------------------------|"<<endl;
+        cout << "\n              |   Which operation do you want :     |" << endl;
+        cout << "              |         1. push                     |" << endl;
+        cout << "              |         2. pop                      |" << endl;
+        cout << "              |         3. peek                     |" << endl;
+        cout << "              |         4. Display                  |" << endl;
+        cout << "              |         5. Exit                     |" << endl;
+        cout << "              ---------------------------------------";
+        while(true){
+        cout << "\n\nEnter your choice : ";
+        cin >> ch;
+            if(cin.fail()){
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout<<"Invalid Choice, Please Enter only integer value.";
+            }
+               else 
+               break;
+            }
+        
+        switch (ch)
+        {
+        case 1:
+            while (true)
+            {
+                cout << "\nEnter data to push: ";
+                cin >> value;
+                if (cin.fail())
+                {
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    cout << "Invalid Choice. Please Enter only integer value";
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            push();
+            break;
+
+        case 2:
+            pop();
+            break;
+
+        case 3:
+            peek();
+            break;
+
+        case 4:
+            display();
+            break;
+
+        case 5:
+            exit(0);
+            break;
+
+        default:
+            cout << "Invalidd chose. Please Enter 1 to 5 " << endl
+                 << endl;
+            break;
+        }
+    }
+    return 0;
 }
