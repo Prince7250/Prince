@@ -21,11 +21,11 @@ const winConditions = [
     [2, 4, 6]
 ];
 
-// Função MiniMax para calcular o melhor movimento
+
 function minimax(board, depth, isMaximizing) {
     let score = checkWinner();
     if (score !== null) {
-        return score; // Retorna o valor de pontuação do estado final
+        return score; 
     }
     
     if (isMaximizing) {
@@ -53,7 +53,7 @@ function minimax(board, depth, isMaximizing) {
     }
 }
 
-// Função que faz o movimento inteligente do Bot
+
 function botMove() {
     let bestScore = -Infinity;
     let move;
@@ -69,13 +69,13 @@ function botMove() {
         }
     }
 
-    // Faz o movimento do Bot
+  
     board[move] = 'O';
     cells[move].textContent = 'O';
     checkResult();
 }
 
-// Função que verifica o vencedor e retorna uma pontuação
+
 function checkWinner() {
     for (let i = 0; i < winConditions.length; i++) {
         const winCondition = winConditions[i];
@@ -86,16 +86,16 @@ function checkWinner() {
         if (a === '' || b === '' || c === '') continue;
 
         if (a === b && b === c) {
-            if (a === 'O') return 10; // Bot ganha
-            if (a === 'X') return -10; // Jogador ganha
+            if (a === 'O') return 10; 
+            if (a === 'X') return -10; 
         }
     }
     
     if (!board.includes('')) {
-        return 0; // Empate
+        return 0; 
     }
 
-    return null; // O jogo continua
+    return null; 
 }
 
 function handleCellClick(e) {
@@ -107,7 +107,7 @@ function handleCellClick(e) {
     checkResult();
 
     if (isBotGame && gameActive) {
-        setTimeout(botMove, 500); // Pequeno delay para o movimento do Bot
+        setTimeout(botMove, 500); 
     }
 }
 
@@ -149,19 +149,17 @@ function restartGame() {
 cells.forEach(cell => cell.addEventListener('click', handleCellClick));
 restartBtn.addEventListener('click', restartGame);
 
-// Modo contra o Bot
+
 vsBotBtn.addEventListener('click', () => {
     isBotGame = true;
     startGame();
 });
 
-// Modo 1v1 entre jogadores
 vsPlayerBtn.addEventListener('click', () => {
     isBotGame = false;
     startGame();
 });
 
-// Iniciar o jogo
 function startGame() {
     menu.style.display = 'none';
     gameContainer.style.display = 'block';
