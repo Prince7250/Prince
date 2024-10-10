@@ -3,6 +3,12 @@ using namespace std;
 
 class A {
 public:
+A(){
+    cout<<"This is constructor of class A."<<endl;
+}
+~A(){
+    cout<<"This is Destructor of class A."<<endl;
+}
      void a()
     {
         cout << "This is class a." << endl;
@@ -35,7 +41,7 @@ int main(){
     d1.a();
     // d1.d();
     // d1.c();
-    d1.b();
+    // d1.b();
     // d1.a();
     return 0;
 }
