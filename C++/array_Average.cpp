@@ -9,6 +9,7 @@ x:
     cin >> n;
     cout << "Enter " << n << " times of any integer : ";
     for (i = 0; i < n; i++)
+
     {
         cin >> arr[i];
     }
