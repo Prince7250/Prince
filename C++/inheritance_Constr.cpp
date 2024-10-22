@@ -8,6 +8,7 @@ class number{
         cout<<"sum of "<<x<<" and "<<y<<" is = "<<sum;  
      }
 };
+// This program showcases various C++ concepts including class definition, object creation, constructor implementation, single inheritance, and basic mathematical operations like addition, multiplication, and checking for even/odd numbers.
 class number1 {
     public:
     void table(){
@@ -43,6 +44,7 @@ class number3 : public number2 {
       cout<<num<<" is odd number.";
     }
 };
+
 int main(){
      number num1 = number(23,45);
      number1 n1;
