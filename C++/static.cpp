@@ -8,6 +8,7 @@ class count{
     total+=1;
   }
 };
+
 int count :: total;
 
 int main(){
