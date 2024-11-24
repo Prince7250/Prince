@@ -13,9 +13,26 @@ void push()
     }
     else
     {
-        top++;
-        arr[top] = value;
-        cout << "\nInsert data is : " << value << endl;
+        
+        //  while(){
+        //     arr[top] = value;
+        //     top++;
+        //  }
+        // arr[top] = value;
+        // top++;
+        arr[++top] = value;
+
+        // for (int i = 0; i <= top; i++)
+        // {
+        //     arr[i] = value;
+        // }
+
+        cout << "\nInserted data is : " << endl;
+        for (int i = 0; i <= top; i++)
+        {
+            cout << arr[i] << " ";
+        }
+        // cout << "\nInsert data is : " << value << endl;
     }
     cout << endl;
 }
@@ -61,40 +78,55 @@ void display()
 
 int main()
 {
-
-    cout << "Enter the size of the stack : ";
-    cin >> size;
-    while (size < 1 || size > MaxSize)
+    while (true)
     {
-        cout << "Invalid Size. Please Enter Size Between 1 to " << MaxSize << endl;
-        cout << "\nRenter size of the stack : ";
+
+        cout << "Enter the size of the stack : ";
         cin >> size;
+        if (cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            // cout << "Invailed choice, Please Enter only integer value." << endl;
+        }
+
+        else
+            break;
+
+        while (size < 1 || size > MaxSize)
+        {
+            cout << "Invalid Input, Please Enter only integer value Between 1 to " << MaxSize << endl;
+            cout << "\nRenter size of the stack : ";
+            cin >> size;
+        }
     }
 
     while (true)
     {
         cout << "              ---------------------------------------";
         cout << "\n              |    Stack Operations                 |" << endl;
-        cout << "              |-------------------------------------|"<<endl;
-        cout << "\n              |   Which operation do you want :     |" << endl;
+        cout << "              |-------------------------------------|" << endl;
+        cout << "              |   Which operation do you want :     |" << endl;
         cout << "              |         1. push                     |" << endl;
         cout << "              |         2. pop                      |" << endl;
         cout << "              |         3. peek                     |" << endl;
         cout << "              |         4. Display                  |" << endl;
         cout << "              |         5. Exit                     |" << endl;
         cout << "              ---------------------------------------";
-        while(true){
-        cout << "\n\nEnter your choice : ";
-        cin >> ch;
-            if(cin.fail()){
+        while (true)
+        {
+            cout << "\n\nEnter your choice : ";
+            cin >> ch;
+            if (cin.fail())
+            {
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                cout<<"Invalid Choice, Please Enter only integer value.";
+                cout << "Invalid Choice, Please Enter only integer value.";
             }
-               else 
-               break;
-            }
-        
+            else
+                break;
+        }
+
         switch (ch)
         {
         case 1:
