@@ -21,7 +21,8 @@ public :
         cout << " Roll number is : " << Roll;
         cout<<"\n Name "<<name;
     }
-};
+}; 
+
 
 int main()
 {
