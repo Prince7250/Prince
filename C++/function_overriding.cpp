@@ -1,3 +1,4 @@
+                    // Compile time function Overriding
 #include <iostream>
 using namespace std;
 class emp
@@ -5,12 +6,12 @@ class emp
 public:
     int emp_id = 131324;
     string name = "Santosh";
-    void show()
+   void show()
     {
         cout << "emp_id : " << emp_id;
         cout << "\nname : " << name << endl;
     }
-     void dis(){
+    void dis(){
         cout<<"\nThis is base class.";
     }
 };
@@ -34,12 +35,12 @@ int main()
    emp *ptr = &e1;
    ptr->show();
    ptr->dis();
-
    e1.dis();
 
     // emp1 e1;
     // e1.show();
     // e1.emp::dis();
+
 
     return 0;
 }
