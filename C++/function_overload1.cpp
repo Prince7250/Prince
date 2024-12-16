@@ -3,7 +3,7 @@ using namespace std;
 int fun(int a)
 {
     return a;
-}
+} 
 int fun(int a, int b)
 {
     return a + b;
