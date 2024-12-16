@@ -12,6 +12,7 @@ public:
     }
 };
 
+
 class stud2 : public stud
 {
     string name = "Rohit";
