@@ -9,7 +9,7 @@ class friend_fu{
         cout<<"\nnumber is : "<<a<<" and "<<b<<endl;
     }
 
-    friend int add(friend_fu f2);
+    friend int add(friend_fu);
 };
 
   int add(friend_fu f2){
@@ -18,9 +18,9 @@ class friend_fu{
   }
 
 int main(){
-   friend_fu f1,f3;
+   friend_fu f1,f2;
    f1.num();
-   cout<<"Sum of two number is : "<<add(f3);
+   cout<<"Sum of two number is : "<<add(f2);
 
     return 0;
 }

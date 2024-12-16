@@ -15,5 +15,6 @@ public:
 int main(){
     A pine;
     pine.ice(3,4,5);
+    pine.ice(2,3);
     return 0;
 }
