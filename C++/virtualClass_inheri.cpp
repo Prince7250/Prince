@@ -1,5 +1,3 @@
-
-
 #include <iostream>
 using namespace std;
 
@@ -19,8 +17,7 @@ public:
         cout << "This is class 2." << endl;
     }
 };
-
-class Derived : virtual public B, virtual public C
+class Derived :  public B,  public C
 {
 public:
     void show1()
@@ -29,7 +26,6 @@ public:
        
     }
 };
-
 int main()
 {
     Derived d1;
