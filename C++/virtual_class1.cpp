@@ -11,7 +11,7 @@ A(){
     {
         cout << "This is class a." << endl;
     }
-};
+};  
 class B : virtual public A {
 public:
     void b()
