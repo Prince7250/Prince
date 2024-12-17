@@ -4,7 +4,7 @@ using namespace std;
 int main(){
      ofstream file1;
      file1.open("D:\\Prince\\C++\\aaa1.txt");
-     file1<<"hi i am prince kumar agrawal";
+     file1<<"hi i am prince";
      cout<<"data written in the file";
      file1.close();
 
