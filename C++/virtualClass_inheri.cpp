@@ -1,44 +1,39 @@
+
+
 #include <iostream>
 using namespace std;
 
-class A {
+class B
+{
 public:
-A(){
-    cout<<"This is constructor of class A."<<endl;
-}
-~A(){
-    cout<<"This is Destructor of class A."<<endl;
-}
-     void a()
+    void show()
     {
-        cout << "This is class a." << endl;
+        cout << "This is class 1." << endl;
     }
 };
-class B : virtual public A {
+class C
+{
 public:
-    void b()
+    void show()
     {
-        cout << "This is class b." << endl;
-    }
-};
-class C : virtual public A{
-public:
-    void c()
-    {
-        cout << "This is class c." << endl;
+        cout << "This is class 2." << endl;
     }
 };
 
-class Derived : public B , public C{
-    public :
-    void d(){
-        cout<<"This is class d."<<endl;
+class Derived : virtual public B, virtual public C
+{
+public:
+    void show1()
+    {
+        cout << "This is class 3." << endl;
+       
     }
 };
 
-int main(){
+int main()
+{
     Derived d1;
-    d1.a();
+    d1.B::show();
     // d1.d();
     // d1.c();
     // d1.b();
