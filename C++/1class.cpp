@@ -23,7 +23,6 @@ public :
     }
 }; 
 
-
 int main()
 {
     stud s1;
