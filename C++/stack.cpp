@@ -3,8 +3,6 @@
 using namespace std;
 const int MaxSize = 100;
 int size, arr[MaxSize], top = -1, value = 0, ch;
-;
-
 void push()
 {
     if (top == size - 1)
@@ -13,29 +11,63 @@ void push()
     }
     else
     {
+        int count;
+        cout << "How many elements do you want to push? ";
+        cin >> count;
         
-        //  while(){
-        //     arr[top] = value;
-        //     top++;
-        //  }
-        // arr[top] = value;
-        // top++;
-        arr[++top] = value;
+        // Check if there's enough space in stack
+        if (top + count >= size)
+        {
+            cout << "Cannot push " << count << " elements. Only " << (size - top - 1) << " spaces left." << endl;
+            return;
+        }
 
-        // for (int i = 0; i <= top; i++)
-        // {
-        //     arr[i] = value;
-        // }
+        cout << "Enter " << count << " elements:" << endl;
+        for (int i = 0; i < count; i++)
+        {
+            cin >> value;
+            arr[++top] = value;
+        }
 
         cout << "\nInserted data is : " << endl;
         for (int i = 0; i <= top; i++)
         {
             cout << arr[i] << " ";
         }
-        // cout << "\nInsert data is : " << value << endl;
     }
     cout << endl;
 }
+// void push()
+// {
+//     if (top == size - 1)
+//     {
+//         cout << "Stack is overflow." << endl;
+//     }
+//     else
+//     {
+        
+//         //  while(){
+//         //     arr[top] = value;
+//         //     top++;
+//         //  }
+//         // arr[top] = value;
+//         // top++;
+//         arr[++top] = value;
+
+//         // for (int i = 0; i <= top; i++)
+//         // {
+//         //     arr[i] = value;
+//         // }
+
+//         cout << "\nInserted data is : " << endl;
+//         for (int i = 0; i <= top; i++)
+//         {
+//             cout << arr[i] << " ";
+//         }
+//         // cout << "\nInsert data is : " << value << endl;
+//     }
+//     cout << endl;
+// }
 
 void pop()
 {
@@ -166,7 +198,7 @@ int main()
             break;
 
         default:
-            cout << "Invalidd chose. Please Enter 1 to 5 " << endl
+            cout << "Invalidd chose. Please Enter Between 1 to 5 " << endl
                  << endl;
             break;
         }
