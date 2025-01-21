@@ -3,7 +3,8 @@
         "iostream": "cpp",
         "random": "cpp",
         "ostream": "cpp",
-        "limits": "cpp"
+        "limits": "cpp",
+        "iomanip": "cpp"
     },
     "pieces.cloudCapabilities": "Blended",
     "pieces.telemetry": true
