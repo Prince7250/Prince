@@ -1,8 +1,8 @@
 public class app {
     public static void main(String[] args) {
         System.out.println("Hello World");
-        int a = 23, b = 34;
-        System.out.println(a - b);
+        System.out.print("This is program 1");
+        System.out.println(4 + 5);
+        System.out.println(4 * 5);
     }
 }
-    
