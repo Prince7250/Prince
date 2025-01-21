@@ -1,59 +1,40 @@
-//1) Write a method threeConsecutive(int a,int b,int c) that accepts three integers as parameters and returns 1 if they are three consecutive numbers ( i.e if the numbers can be arranged into an order such that their values differ by exactly 1 ) otherwise return 0.
-
-//For example, the call of ThreeConsecutive(3, 2, 4) would return 1.
+//1) Write a program to generate and print all the primes in the first n positive integers. 
 // #include<iostream>
 // using namespace std;
-
-// int threeConsecutive(int a, int b, int c) {
-//     int minnum , maxnum , midnum;
-//     minnum = min(a, min(b, c));
-//     maxnum = max(a, max(b, c));
-//     midnum = a + b + c - minnum - maxnum;
-
-//     if (maxnum - midnum == 1 && midnum - minnum == 1) {
-//         return 1;
-//     }
-//     return 0;
-// }
-
-// int main(){
-//     int a , b ,c;
-//     cin>>a>>b>>c;
-//    if(threeConsecutive(a, b, c)){
-//     cout<<"1";
-//    }
-//    else {
-//     cout<<"0";
-//    }
-//     return 0;
-// }
+// int main()
+//  {
+//    int i, j, num, sum=0;
+//    bool prime;
+//    cin>>num;
+//    for(i = 1; i <= num; i++){
+//        prime = true;
+//        for(j=2; j <= i/2;j++){
+//           if(i % j == 0) {
+//             prime = false;
+//             break;
+//           }
+//        }
+//           if(prime){
+//             cout<<i<<endl;
+//         }
+//      }
+//    return 0;
+//   }
 
 
-//2) Write a function void reverseArray(int *a, int size) which takes two parameters i.e. an pointer to first element of array, an integer size.
-
-// The function must reverse the array elements inside the array, Don't print the array elements as printing is done in main function.
- 
- #include<iostream> 
- using namespace std;
-    void reverseArray(int *a, int size) {
-        int i, temp;
-        for(i = 0; i < size / 2; i++) {
-            temp = a[i];
-            a[i] = a[size - 1 - i];
-            a[size - 1 - i] = temp;
-        }
-    }
-
-    int main(){
-        int n;
-        cin>>n;
-        int a[n];
-        for(int i = 0; i < n; i++){
-            cin>>a[i];
-        }
-        reverseArray(a, n);
-        for(int i = 0; i < n; i++){
-            cout<<a[i]<<" ";
-        }
-        return 0;
-    }
+//2) Complete the below functions which will receive 3 integer pointers and print the sum of them.
+// Note: Complete the given functions only, rest of the code is already written by the compiler for you.
+#include<iostream>
+using namespace std;
+void sum(int *p1, int *p2, int *p3)
+{
+   cout<<*p1 +  *p2 + *p3;
+         
+}
+int main()
+{
+    int a, b, c;
+    cin>>a>>b>>c;
+    sum(&a, &b, &c);
+    return 0;
+}
