@@ -4,7 +4,8 @@
         "random": "cpp",
         "ostream": "cpp",
         "limits": "cpp",
-        "iomanip": "cpp"
+        "iomanip": "cpp",
+        "new": "cpp"
     },
     "pieces.cloudCapabilities": "Blended",
     "pieces.telemetry": true
