@@ -74,7 +74,6 @@ int main() {
         for (int i = 0; i < n; i++) {
             cin >> arr[i];
         }
-
         int result = searchRotatedSortedArray(arr, n, k);
         cout << result << endl;
     }
