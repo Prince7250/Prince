@@ -5,8 +5,10 @@
         "ostream": "cpp",
         "limits": "cpp",
         "iomanip": "cpp",
-        "new": "cpp"
+        "new": "cpp",
+        "unordered_map": "cpp"
     },
     "pieces.cloudCapabilities": "Blended",
-    "pieces.telemetry": true
+    "pieces.telemetry": true,
+    "C_Cpp.errorSquiggles": "disabled"
 }
