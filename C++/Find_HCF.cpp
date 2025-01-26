@@ -5,19 +5,16 @@ int main()
  int n1,n2,i;
  cout<<"Enter any two number : ";
  cin>>n1>>n2;   
+
+ while(n1!=n2){
+        if(n1>n2){
+            n1 = n1-n2;
+        }
+        else{
+            n2 = n2-n1;
+        }
+    }
+    cout<<n1;
   
-
-
-
-//  while(n1!=n2){
-//         if(n1>n2){
-//             n1 = n1-n2;
-//         }
-//         else{
-//             n2 = n2-n1;
-//         }
-//     }
-//     cout<<n1;
-  main();
 return 0;
 }
