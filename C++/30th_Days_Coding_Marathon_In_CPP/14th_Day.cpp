@@ -52,7 +52,7 @@ using namespace std;
 
 //     rev.pop_back();
 //     cout << rev<<endl;
-// }
+// }15
 
 void revWordsString(string str) {
     stringstream ss(str);
