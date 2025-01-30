@@ -6,7 +6,10 @@
         "limits": "cpp",
         "iomanip": "cpp",
         "new": "cpp",
-        "unordered_map": "cpp"
+        "unordered_map": "cpp",
+        "iosfwd": "cpp",
+        "*.tcc": "cpp",
+        "string": "cpp"
     },
     "pieces.cloudCapabilities": "Blended",
     "pieces.telemetry": true,
