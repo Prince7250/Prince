@@ -9,6 +9,10 @@
 // (b) 2   (a query of this type means to delete element from queue and print the deleted element)
 // Then Q queries follow in following lines.
 
+
+
+
+
 //2) Implement the queue using Linked List bookmark_border
 // Implement the queue using linked list representation. Complete the methods given in the code editor.
 
