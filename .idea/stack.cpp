@@ -1,146 +1,128 @@
 #include <iostream>
-#include <stdexcept>
-#include <string>
+#include <memory>
+#include <vector>
 #include <sstream>
 using namespace std;
 
-class StackItem {
+class StackItem
+{
 public:
     virtual ~StackItem() {}
     virtual void print() const = 0;
-    virtual StackItem* clone() const = 0;
+    virtual unique_ptr<StackItem> clone() const = 0;
 };
 
 template <typename T>
-class TypedItem : public StackItem {
+class TypedItem : public StackItem
+{
     T value;
+
 public:
     TypedItem(T val) : value(val) {}
     void print() const override { cout << value; }
-    StackItem* clone() const override { return new TypedItem<T>(value); }
+    unique_ptr<StackItem> clone() const override { return make_unique<TypedItem<T>>(value); }
 };
 
 template <>
-class TypedItem<char> : public StackItem {
+class TypedItem<char> : public StackItem
+{
     char value;
+
 public:
     TypedItem(char val) : value(val) {}
     void print() const override { cout << "'" << value << "'"; }
-    StackItem* clone() const override { return new TypedItem<char>(value); }
+    unique_ptr<StackItem> clone() const override { return make_unique<TypedItem<char>>(value); }
 };
 
-class DynamicStack {
+class DynamicStack
+{
 private:
-    StackItem** stack;
-    int capacity;
-    int size;
-
-    void resize() {
-        capacity *= 2;
-        StackItem** newStack = new StackItem*[capacity];
-        for (int i = 0; i < size; i++) {
-            newStack[i] = stack[i];
-        }
-        delete[] stack;
-        stack = newStack;
-    }
+    vector<unique_ptr<StackItem>> stack;
 
 public:
-    DynamicStack() {
-        capacity = 2;
-        stack = new StackItem*[capacity];
-        size = 0;
-    }
-
-    ~DynamicStack() {
-        for (int i = 0; i < size; i++) {
-            delete stack[i];
-        }
-        delete[] stack;
-    }
-
-    void push(const string& input) {
-        if (size == capacity) {
-            resize();
-        }
-
+    void push(const string &input)
+    {
         stringstream ss(input);
         int intValue;
-        if (ss >> intValue && ss.eof()) {
-            stack[size] = new TypedItem<int>(intValue);
-            size++;
+        if (ss >> intValue && ss.eof())
+        {
+            stack.push_back(make_unique<TypedItem<int>>(intValue));
             return;
         }
 
         ss.clear();
         ss.str(input);
         float floatValue;
-        if (ss >> floatValue && ss.eof()) {
-            stack[size] = new TypedItem<float>(floatValue);
-            size++;
+        if (ss >> floatValue && ss.eof())
+        {
+            stack.push_back(make_unique<TypedItem<float>>(floatValue));
             return;
         }
 
-        if (input.length() == 1) {
-            stack[size] = new TypedItem<char>(input[0]);
-            size++;
+        if (input.length() == 3 && input[0] == '\'' && input[2] == '\'')
+        {
+            stack.push_back(make_unique<TypedItem<char>>(input[1]));
             return;
         }
 
-        if (input.length() == 3 && input[0] == '\'' && input[2] == '\'') {
-            stack[size] = new TypedItem<char>(input[1]);
-            size++;
-            return;
-        }
-
-        stack[size] = new TypedItem<char>(input[0]);
-        size++;
+        stack.push_back(make_unique<TypedItem<char>>(input[0]));
     }
 
-    StackItem* pop() {
-        if (isEmpty()) {
+    unique_ptr<StackItem> pop()
+    {
+        if (isEmpty())
+        {
             throw runtime_error("Stack is empty");
         }
-        size--;
-        StackItem* item = stack[size];
-        stack[size] = nullptr;
+        auto item = move(stack.back());
+        stack.pop_back();
         return item;
     }
 
-    StackItem* peek() const {
-        if (isEmpty()) {
+    StackItem *peek() const
+    {
+        if (isEmpty())
+        {
             throw runtime_error("Stack is empty");
         }
-        return stack[size - 1];
+        return stack.back().get();
     }
 
-    bool isEmpty() const {
-        return size == 0;
+    bool isEmpty() const
+    {
+        return stack.empty();
     }
 
-    int getSize() const {
-        return size;
+    int getSize() const
+    {
+        return stack.size();
     }
 
-    void display() const {
-        if (isEmpty()) {
+    void display() const
+    {
+        if (isEmpty())
+        {
             cout << "Stack is empty.\n";
             return;
         }
         cout << "Stack contents (top to bottom): ";
-        for (int i = size - 1; i >= 0; i--) {
+        for (int i = stack.size() - 1; i >= 0; i--)
+        {
             stack[i]->print();
-            if (i > 0) cout << " -> ";
+            if (i > 0)
+                cout << " -> ";
         }
         cout << "\n";
     }
 };
 
-int main() {
+int main()
+{
     DynamicStack stack;
     int choice;
 
-    while (true) {
+    while (true)
+    {
         cout << "\nStack Operations:\n";
         cout << "1. Push\n";
         cout << "2. Pop\n";
@@ -152,71 +134,84 @@ int main() {
         cout << "Enter your choice (1-7): ";
         cin >> choice;
 
-        if (cin.fail()) {
+        if (cin.fail())
+        {
             cin.clear();
             cin.ignore(10000, '\n');
             cout << "Invalid input. Please enter a number between 1 and 7.\n";
             continue;
         }
 
-        switch (choice) {
-            case 1: {
-                string input;
-                cout << "Enter value to push (e.g., 42, 3.14, A, 'b'): ";
-                cin.ignore(10000, '\n');
-                getline(cin, input);
-                if (input.empty()) {
-                    cout << "No input provided.\n";
-                } else {
-                    stack.push(input);
-                    cout << "Pushed: " << input << "\n";
-                }
-                break;
+        switch (choice)
+        {
+        case 1:
+        {
+            string input;
+            cout << "Enter value to push (e.g., 42, 3.14, A, 'b'): ";
+            cin.ignore();
+            getline(cin, input);
+            if (input.empty())
+            {
+                cout << "No input provided.\n";
             }
-
-            case 2: {
-                try {
-                    StackItem* item = stack.pop();
-                    cout << "Popped: ";
-                    item->print();
-                    cout << "\n";
-                    delete item;
-                } catch (const runtime_error& e) {
-                    cout << "Error: " << e.what() << "\n";
-                }
-                break;
+            else
+            {
+                stack.push(input);
+                cout << "Pushed: " << input << "\n";
             }
+            break;
+        }
 
-            case 3: {
-                try {
-                    StackItem* item = stack.peek();
-                    cout << "Top element: ";
-                    item->print();
-                    cout << "\n";
-                } catch (const runtime_error& e) {
-                    cout << "Error: " << e.what() << "\n";
-                }
-                break;
+        case 2:
+        {
+            try
+            {
+                auto item = stack.pop();
+                cout << "Popped: ";
+                item->print();
+                cout << "\n";
             }
+            catch (const runtime_error &e)
+            {
+                cout << "Error: " << e.what() << "\n";
+            }
+            break;
+        }
 
-            case 4:
-                cout << "Stack is " << (stack.isEmpty() ? "empty" : "not empty") << "\n";
-                break;
+        case 3:
+        {
+            try
+            {
+                StackItem *item = stack.peek();
+                cout << "Top element: ";
+                item->print();
+                cout << "\n";
+            }
+            catch (const runtime_error &e)
+            {
+                cout << "Error: " << e.what() << "\n";
+            }
+            break;
+        }
 
-            case 5:
-                cout << "Stack size: " << stack.getSize() << "\n";
-                break;
+        case 4:
+            cout << "Stack is " << (stack.isEmpty() ? "empty" : "not empty") << "\n";
+            break;
 
-            case 6:
-                stack.display();
-                break;
+        case 5:
+            cout << "Stack size: " << stack.getSize() << "\n";
+            break;
 
-            case 7:
-                cout << "Exiting...\n";
-                return 0;
+        case 6:
+            stack.display();
+            break;
 
-            default:
-                cout << "Invalid choice. Please enter a number between 1 and 7.\n";
+        case 7:
+            cout << "Exiting...\n";
+            return 0;
+
+        default:
+            cout << "Invalid choice. Please enter a number between 1 and 7.\n";
         }
     }
 
