@@ -5,9 +5,16 @@ from sklearn.preprocessing import LabelEncoder
 model_name = "bert-base-uncased"
 tokenizer = BertTokenizer.from_pretrained(model_name)
 
-model = BertForSequenceClassification.from_pretrained(model_name, num_labels=2)
+try:
+    model = BertForSequenceClassification.from_pretrained(model_name, num_labels=2)
+except Exception as e:
+    print(f"Error loading model: {e}")
+    model = None
 
 def predict_fake_news(text):
+    if model is None:
+        return "Model not loaded", 0.0
+    
     inputs = tokenizer(text, return_tensors="pt", truncation=True, padding=True, max_length=128)
     
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
