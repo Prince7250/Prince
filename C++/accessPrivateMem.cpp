@@ -8,7 +8,7 @@ private:
         cout << "This is Private Member function ";
     }
 
-    public :
+    public : 
     void callPrivateMem(){
         privateMem();
     }
